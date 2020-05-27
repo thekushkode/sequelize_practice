@@ -2,10 +2,10 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('Albums', 'ArtistId', {
+    return queryInterface.changeColumn('Albums', 'artist_id', {
         type: Sequelize.DataTypes.INTEGER,
         references: {
-          model: 'Artist', // name of Target model
+          model: 'Artists', // name of Target model
           ArtistId: 'id', // key in Target model
         },
         onUpdate: 'CASCADE',
@@ -14,6 +14,6 @@ module.exports = {
 },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('Albums', 'ArtistId');
+    return queryInterface.removeColumn('Albums', 'artist_id');
   },
 };
